@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Sparkles,
   Code2,
   Cloud,
   Zap,
@@ -17,9 +16,8 @@ import {
   Radio,
   Workflow,
   Boxes,
+  Download,
 } from "lucide-react";
-
-import OrbitSkills from "../components/OrbitSkills";
 
 const roles = [
   "FULL STACK DEVELOPER",
@@ -128,11 +126,7 @@ const Hero = () => {
   useEffect(() => {
     const currentRole = roles[roleIndex];
 
-    let speed = isDeleting ? 45 : 75;
-
-    if (!isDeleting && text === currentRole) {
-      speed = 1700;
-    }
+    const speed = isDeleting ? 40 : text === currentRole ? 1500 : 65;
 
     const timer = setTimeout(() => {
       if (!isDeleting) {
@@ -163,14 +157,14 @@ const Hero = () => {
         mx-auto
         flex
         min-h-[calc(100vh-80px)]
-        max-w-[1500px]
+        max-w-[1450px]
         items-center
         px-5
         py-6
         sm:px-8
         sm:py-8
         lg:px-10
-        lg:py-4
+        lg:py-5
         xl:px-14
       "
     >
@@ -180,28 +174,35 @@ const Hero = () => {
           w-full
           items-center
           gap-5
-          lg:grid-cols-[0.95fr_1.05fr]
-          xl:gap-2
+          lg:grid-cols-[1.35fr_0.65fr]
+          xl:gap-8
         "
       >
-        {/* =================================================
+        {/* =====================================================
             LEFT CONTENT
-        ================================================= */}
+        ===================================================== */}
 
         <div
           className="
             relative
             z-30
+            flex
+            flex-col
+            justify-center
             text-center
             lg:text-left
           "
         >
-          {/* Availability */}
+          {/* ==========================================
+              AVAILABILITY
+          ========================================== */}
 
           <div
             className="
-              mb-3
+              mb-4
               inline-flex
+              w-fit
+              self-center
               items-center
               gap-2
               rounded-full
@@ -213,6 +214,7 @@ const Hero = () => {
               text-[9px]
               text-zinc-400
               sm:text-[10px]
+              lg:self-start
             "
           >
             <span
@@ -228,11 +230,13 @@ const Hero = () => {
             Available for new opportunities
           </div>
 
-          {/* Small Label */}
+          {/* ==========================================
+              ENGINEER LABEL
+          ========================================== */}
 
           <div
             className="
-              mb-2
+              mb-4
               flex
               items-center
               justify-center
@@ -240,24 +244,26 @@ const Hero = () => {
               lg:justify-start
             "
           >
-            <span className="h-px w-7 bg-violet-500/50" />
+            <span className="h-px w-8 bg-violet-500/50" />
 
             <span
               className="
-                text-[8px]
+                text-[10px]
                 font-semibold
                 tracking-[0.3em]
                 text-violet-300
-                sm:text-[15px]
+                sm:text-[11px]
               "
             >
               FULL STACK ENGINEER
             </span>
           </div>
 
-          {/* Typing Role */}
+          {/* ==========================================
+              TYPEWRITER
+          ========================================== */}
 
-          <div className="mb-3 min-h-[29px]">
+          <div className="mb-5 min-h-[30px]">
             <div
               className="
                 inline-flex
@@ -307,26 +313,24 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* =================================================
+          {/* ==========================================
               MAIN HEADING
-          ================================================= */}
+          ========================================== */}
 
           <h1
             className="
               font-['Space_Grotesk']
-              text-[35px]
+              text-[37px]
               font-semibold
-              leading-[0.9]
+              leading-[0.98]
               tracking-[-0.055em]
               sm:text-[43px]
               md:text-[48px]
-              lg:text-[46px]
-              xl:text-[54px]
-              2xl:text-[60px]
+              lg:text-[48px]
+              xl:text-[55px]
             "
           >
-            I build
-            <br />
+            I build{" "}
             <span
               className="
                 bg-gradient-to-r
@@ -343,44 +347,39 @@ const Hero = () => {
             digital products.
           </h1>
 
-          {/* =================================================
-              EXPERIENCE
-          ================================================= */}
+          {/* ==========================================
+              DESCRIPTION
+          ========================================== */}
 
-          <div
+          <p
             className="
               mx-auto
-              mt-4
-              max-w-[590px]
+              mt-5
+              max-w-[600px]
+              text-[12px]
+              leading-6
+              text-zinc-400
+              sm:text-[13px]
               lg:mx-0
+              lg:text-[13px]
             "
           >
-            <p
-              className="
-                text-[12px]
-                leading-5
-                text-zinc-400
-                sm:text-[13px]
-                lg:text-sm
-              "
-            >
-              Full Stack Developer with{" "}
-              <span className="font-bold text-white">
-                4.5+ years of experience
-              </span>{" "}
-              building scalable, production-ready web applications.
-            </p>
-          </div>
+            Full Stack Developer with{" "}
+            <span className="font-semibold text-white">
+              4.5+ years of experience
+            </span>{" "}
+            building scalable, production-ready web applications.
+          </p>
 
-          {/* =================================================
-              COMPLETE TECH STACK
-          ================================================= */}
+          {/* ==========================================
+              TECHNOLOGIES
+          ========================================== */}
 
           <div
             className="
               mx-auto
-              mt-4
-              max-w-[620px]
+              mt-5
+              max-w-[720px]
               lg:mx-0
             "
           >
@@ -390,9 +389,8 @@ const Hero = () => {
                 flex-wrap
                 items-center
                 justify-center
-                gap-1.5
+                gap-2
                 lg:justify-start
-                xl:gap-2
               "
             >
               {technologies.map((tech) => {
@@ -405,14 +403,13 @@ const Hero = () => {
                     className="
                       group
                       flex
-                      cursor-default
                       items-center
                       gap-1.5
                       rounded-full
                       border
                       border-white/[0.08]
                       bg-white/[0.035]
-                      px-2.5
+                      px-3
                       py-1.5
                       backdrop-blur-xl
                       transition-all
@@ -420,13 +417,13 @@ const Hero = () => {
                       hover:-translate-y-1
                       hover:border-violet-400/30
                       hover:bg-violet-500/[0.08]
-                      hover:shadow-[0_0_20px_rgba(139,92,246,.18)]
+                      hover:shadow-[0_0_18px_rgba(139,92,246,.15)]
                     "
                   >
                     <Icon
                       className={`
-                        h-3
-                        w-3
+                        h-3.5
+                        w-3.5
                         shrink-0
                         ${tech.color}
                         transition-transform
@@ -438,12 +435,12 @@ const Hero = () => {
                     <span
                       className="
                         whitespace-nowrap
-                        text-[8px]
+                        text-[9px]
                         font-medium
                         text-zinc-400
                         transition-colors
                         group-hover:text-white
-                        sm:text-[9px]
+                        sm:text-[10px]
                       "
                     >
                       {tech.name}
@@ -454,69 +451,120 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* =================================================
-              EXPLORE BUTTON
-          ================================================= */}
+          {/* ==========================================
+              CTA BUTTONS
+          ========================================== */}
 
           <div
             className="
-              mt-4
+              mt-6
               flex
+              flex-wrap
               items-center
               justify-center
+              gap-3
               lg:justify-start
             "
           >
+            {/* Explore My Work */}
+
             <a
               href="#works"
               className="
+                inline-flex
+                items-center
                 rounded-full
                 border
-                border-white/10
-                bg-white/[0.025]
+                border-violet-400/25
+                bg-violet-500/[0.08]
                 px-5
                 py-2.5
                 text-[11px]
-                text-zinc-400
-                transition
+                font-medium
+                text-violet-200
+                transition-all
                 duration-300
                 hover:-translate-y-0.5
-                hover:border-violet-400/30
-                hover:bg-white/[0.05]
-                hover:text-white
+                hover:border-violet-400/40
+                hover:bg-violet-500/[0.14]
+                hover:shadow-[0_0_25px_rgba(139,92,246,.2)]
               "
             >
               Explore My Work
             </a>
+
+            {/* Download Resume */}
+
+            <a
+              href="/Satendra-Kumar-Resume.pdf"
+              download="Satendra-Kumar-Resume.pdf"
+              className="
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                border-white/[0.10]
+                bg-white/[0.04]
+                px-5
+                py-2.5
+                text-[11px]
+                font-medium
+                text-zinc-300
+                backdrop-blur-xl
+                transition-all
+                duration-300
+                hover:-translate-y-0.5
+                hover:border-white/[0.20]
+                hover:bg-white/[0.08]
+                hover:text-white
+                hover:shadow-[0_0_25px_rgba(255,255,255,.08)]
+              "
+            >
+              <Download
+                className="
+                  h-3.5
+                  w-3.5
+                  transition-transform
+                  duration-300
+                  group-hover:translate-y-0.5
+                "
+              />
+              Download Resume
+            </a>
           </div>
 
-          {/* =================================================
+          {/* ==========================================
               STATS
-          ================================================= */}
+          ========================================== */}
 
           <div
             className="
               mx-auto
-              mt-4
+              mt-6
               grid
-              max-w-[390px]
+              w-full
+              max-w-[420px]
               grid-cols-3
               divide-x
               divide-white/[0.08]
               border-y
               border-white/[0.06]
-              py-2.5
+              py-3
               lg:mx-0
             "
           >
-            <div className="px-2 text-center lg:text-left">
+            {/* EXPERIENCE */}
+
+            <div className="text-center lg:text-left">
               <strong
                 className="
                   block
-                  text-base
+                  text-lg
                   font-semibold
+                  leading-none
                   text-white
-                  sm:text-lg
+                  sm:text-xl
                 "
               >
                 4.5+
@@ -524,6 +572,8 @@ const Hero = () => {
 
               <span
                 className="
+                  mt-1.5
+                  block
                   text-[7px]
                   uppercase
                   tracking-wider
@@ -535,14 +585,17 @@ const Hero = () => {
               </span>
             </div>
 
-            <div className="px-2 text-center lg:text-left">
+            {/* PROJECTS */}
+
+            <div className="text-center lg:pl-5 lg:text-left">
               <strong
                 className="
                   block
-                  text-base
+                  text-lg
                   font-semibold
+                  leading-none
                   text-white
-                  sm:text-lg
+                  sm:text-xl
                 "
               >
                 10+
@@ -550,6 +603,8 @@ const Hero = () => {
 
               <span
                 className="
+                  mt-1.5
+                  block
                   text-[7px]
                   uppercase
                   tracking-wider
@@ -561,14 +616,17 @@ const Hero = () => {
               </span>
             </div>
 
-            <div className="px-2 text-center lg:text-left">
+            {/* TECHNOLOGIES */}
+
+            <div className="text-center lg:pl-5 lg:text-left">
               <strong
                 className="
                   block
-                  text-base
+                  text-lg
                   font-semibold
+                  leading-none
                   text-white
-                  sm:text-lg
+                  sm:text-xl
                 "
               >
                 15+
@@ -576,6 +634,8 @@ const Hero = () => {
 
               <span
                 className="
+                  mt-1.5
+                  block
                   text-[7px]
                   uppercase
                   tracking-wider
@@ -589,74 +649,172 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* =================================================
-            RIGHT VISUAL
-        ================================================= */}
+        {/* =====================================================
+            RIGHT — PHOTO ONLY
+        ===================================================== */}
 
         <div
           className="
             relative
-            mx-auto
-            flex
-            w-full
+            hidden
             items-center
             justify-center
+            lg:flex
           "
         >
-          {/* Top Label */}
+          {/* Background Glow */}
 
           <div
             className="
               absolute
-              right-[8%]
-              top-[0%]
-              z-40
-              hidden
-              items-center
-              gap-2
+              h-[65%]
+              w-[65%]
               rounded-full
-              border
-              border-white/[0.08]
-              bg-black/60
-              px-3
-              py-1.5
-              text-[8px]
-              text-zinc-500
-              backdrop-blur-xl
-              lg:flex
+              bg-violet-600/20
+              blur-[90px]
             "
-          >
-            <Sparkles className="h-3 w-3 text-violet-400" />
-            Building digital products
-          </div>
+          />
 
-          {/* Orbit */}
+          <div
+            className="
+              absolute
+              h-[45%]
+              w-[45%]
+              rounded-full
+              bg-cyan-500/10
+              blur-[70px]
+            "
+          />
+
+          {/* ==========================================
+              PHOTO
+          ========================================== */}
 
           <div
             className="
               relative
-              -mt-2
-              w-full
-              max-w-[520px]
-              scale-[0.72]
-              sm:scale-[0.78]
-              lg:scale-[0.78]
-              xl:scale-[0.84]
-              2xl:scale-[0.92]
+              z-20
+              w-[270px]
+              sm:w-[290px]
+              lg:w-[300px]
+              xl:w-[330px]
             "
           >
-            <OrbitSkills />
+            {/* Outer Glow */}
+
+            <div
+              className="
+                absolute
+                inset-[-10%]
+                rounded-full
+                bg-gradient-to-r
+                from-violet-600/30
+                via-fuchsia-500/15
+                to-cyan-500/30
+                blur-[35px]
+              "
+            />
+
+            {/* Outer Ring */}
+
+            <div
+              className="
+                absolute
+                inset-[-4%]
+                rounded-full
+                border
+                border-violet-400/20
+                bg-gradient-to-br
+                from-violet-500/10
+                to-cyan-500/10
+              "
+            />
+
+            {/* Image */}
+
+            <div
+              className="
+                relative
+                aspect-square
+                overflow-hidden
+                rounded-full
+                bg-gradient-to-br
+                from-violet-400
+                via-fuchsia-400
+                to-cyan-400
+                p-[3px]
+                shadow-[0_0_60px_rgba(124,58,237,.3)]
+              "
+            >
+              <div
+                className="
+                  h-full
+                  w-full
+                  overflow-hidden
+                  rounded-full
+                  bg-zinc-950
+                "
+              >
+                <img
+                  src="/satendra-kumar.jpeg"
+                  alt="Satendra Kumar"
+                  className="
+                    h-full
+                    w-full
+                    object-cover
+                    object-[center_25%]
+                  "
+                />
+              </div>
+            </div>
+
+            {/* Available Badge */}
+
+            <div
+              className="
+                absolute
+                bottom-[2%]
+                left-1/2
+                flex
+                -translate-x-1/2
+                items-center
+                gap-1.5
+                whitespace-nowrap
+                rounded-full
+                border
+                border-white/[0.1]
+                bg-[#09090b]/90
+                px-3
+                py-1.5
+                text-[8px]
+                text-zinc-400
+                shadow-xl
+                backdrop-blur-xl
+              "
+            >
+              <span
+                className="
+                  h-1.5
+                  w-1.5
+                  rounded-full
+                  bg-emerald-400
+                  shadow-[0_0_8px_rgba(52,211,153,.9)]
+                "
+              />
+              Available for opportunities
+            </div>
           </div>
 
-          {/* Clean Code */}
+          {/* ==========================================
+              CLEAN CODE
+          ========================================== */}
 
           <div
             className="
               absolute
-              left-[3%]
-              top-[31%]
-              z-40
-              hidden
+              left-[2%]
+              top-[27%]
+              z-30
               rounded-xl
               border
               border-white/[0.08]
@@ -664,23 +822,23 @@ const Hero = () => {
               p-2.5
               shadow-xl
               backdrop-blur-xl
-              lg:block
             "
           >
             <Code2 className="h-3.5 w-3.5 text-violet-400" />
 
-            <p className="mt-1.5 text-[7px] text-zinc-600">Clean Code</p>
+            <p className="mt-1 text-[7px] text-zinc-500">Clean Code</p>
           </div>
 
-          {/* Cloud */}
+          {/* ==========================================
+              CLOUD
+          ========================================== */}
 
           <div
             className="
               absolute
-              bottom-[24%]
               right-[2%]
-              z-40
-              hidden
+              top-[30%]
+              z-30
               rounded-xl
               border
               border-white/[0.08]
@@ -688,23 +846,23 @@ const Hero = () => {
               p-2.5
               shadow-xl
               backdrop-blur-xl
-              lg:block
             "
           >
             <Cloud className="h-3.5 w-3.5 text-cyan-400" />
 
-            <p className="mt-1.5 text-[7px] text-zinc-600">Cloud Ready</p>
+            <p className="mt-1 text-[7px] text-zinc-500">Cloud Ready</p>
           </div>
 
-          {/* Performance */}
+          {/* ==========================================
+              PERFORMANCE
+          ========================================== */}
 
           <div
             className="
               absolute
-              bottom-[11%]
-              left-[14%]
-              z-40
-              hidden
+              bottom-[18%]
+              left-[8%]
+              z-30
               rounded-xl
               border
               border-white/[0.08]
@@ -712,12 +870,11 @@ const Hero = () => {
               p-2.5
               shadow-xl
               backdrop-blur-xl
-              lg:block
             "
           >
             <Zap className="h-3.5 w-3.5 text-yellow-400" />
 
-            <p className="mt-1.5 text-[7px] text-zinc-600">High Performance</p>
+            <p className="mt-1 text-[7px] text-zinc-500">Performance</p>
           </div>
         </div>
       </div>
